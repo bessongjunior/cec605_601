@@ -52,7 +52,7 @@ orbs:
 jobs:
   build-frontend:
     docker:
-      - image: cimg/node:14 #circleci/node:13.8.0
+      - image: cimg/node:21.5.0
     steps:
       - checkout
       - restore_cache:
@@ -69,7 +69,7 @@ jobs:
 
   build-backend:
     docker:
-      - image: cimg/python:3.11 #circleci/python:3.9
+      - image: circleci/python:3.11
     steps:
       - checkout
       - restore_cache:
@@ -94,7 +94,7 @@ jobs:
   test-frontend:
     docker:
       # Docker image here
-      - image: cimg/node:14 #circleci/node:13.8.0
+      - image: cimg/node:21.5.0
     steps:
       # Checkout code from git
       - checkout
@@ -117,7 +117,7 @@ jobs:
   test-backend:
     docker:
       # Docker image here
-      - image: cimg/python:3.11 #circleci/python:3.9
+      - image: circleci/python:3.11
     steps:
       # Checkout code from git
       - checkout
