@@ -81,6 +81,9 @@ jobs:
             python -m pip install --upgrade pip
             pip install -r requirements.txt
             python3 run.py 
+      - run:
+          name: Run application
+          command: timeout 2m
 
       - save_cache:
           paths: [server/cache]
