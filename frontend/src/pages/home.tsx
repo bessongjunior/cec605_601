@@ -19,15 +19,14 @@ export const HomePage: FC = () => {
     return (
         <Fragment>
             <ThemeProvider theme={theme}>
-            {/* <h1>Hello, test!</h1> */}
             <CssBaseline />
             <Header />
 
             <HomeHero />
-            {/* <HomePopularCourse /> */}
+            <HomePopularCourse />
             <HomeFeature />
-            {/* <HomeTestimonial /> */}
-            {/* <HomeOurMentors /> */}
+            <HomeTestimonial />
+            <HomeOurMentors />
             <HomeNewsLetter />
             <Footer />
             </ThemeProvider>

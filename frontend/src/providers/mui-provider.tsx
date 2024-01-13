@@ -1,7 +1,7 @@
-import React, { FC, ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 import { ThemeProvider } from '@mui/material'
 
-import theme from '@/config/theme'
+import theme from '../config/theme'
 
 interface Props {
   children: ReactNode
