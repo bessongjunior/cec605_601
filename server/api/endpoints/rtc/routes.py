@@ -8,6 +8,7 @@ from flask_socketio import SocketIO, emit, send, join_room, leave_room
 
 from ...models.models import ChatConnection, Mentees, Mentors, Community, CommunityMember, Message, User
 from ...config import BaseConfig
+from ... import socketio
 
 
 webrtc_ns = Namespace('webrtc', description='WebRTC related operations')
