@@ -5,48 +5,48 @@ orbs:
   slack: circleci/slack@4.12.0
   aws-cli: circleci/aws-cli@3.1.4
 
-commands:
-  destroy-environment:
-    description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
-    parameters:
-      # Add parameter here   
-      workflow_id:
-        type: string
-        default: "${CIRCLE_WORKFLOW_ID:0:7}"      
-    steps:
-      - run:
-          name: Destroy environments
-          when: on_fail
-          command: |
-            # Your code here
-            # echo "Destroying environment: << parameters.workflow_id >> "
-            aws cloudformation delete-stack --stack-name udapeople-frontend-<< parameters.workflow_id >>
-            aws cloudformation delete-stack --stack-name udapeople-backend-<< parameters.workflow_id >>
-            aws s3 rm s3://udapeople-<<parameters.workflow_id>> --recursive
+# commands:
+#   destroy-environment:
+#     description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
+#     parameters:
+#       # Add parameter here   
+#       workflow_id:
+#         type: string
+#         default: "${CIRCLE_WORKFLOW_ID:0:7}"      
+#     steps:
+#       - run:
+#           name: Destroy environments
+#           when: on_fail
+#           command: |
+#             # Your code here
+#             # echo "Destroying environment: << parameters.workflow_id >> "
+#             aws cloudformation delete-stack --stack-name udapeople-frontend-<< parameters.workflow_id >>
+#             aws cloudformation delete-stack --stack-name udapeople-backend-<< parameters.workflow_id >>
+#             aws s3 rm s3://udapeople-<<parameters.workflow_id>> --recursive
 
-  revert-migrations:
-    description: Revert the last migration if successfully run in the current workflow.
-    parameters:
-      #add parameters here
-      workflow_id:
-        type: string
-        default: "${CIRCLE_WORKFLOW_ID:0:7}"     
-    steps:
-      - run:
-          name: Revert migrations
-          # Add when this will run
-          when: on_fail
-          command: |
-            # Curl command here to see if there was a successful migration associated with the workflow id, store result in SUCCESS variable
-            # SUCCESS = 1  # comment this code line.
-            SUCCESS=$(curl -k "https://kvdb.io/Ddru8uAtzykhKNxseBqGBP/migration_<< parameters.workflow_id >>")
-            if(( $SUCCESS==1 )); 
-            then
-              cd ~/project/backend
-              npm install
-              #  Add revert code here. You can find this in the Getting Started section.
-              npm run migrations:revert
-            fi
+#   revert-migrations:
+#     description: Revert the last migration if successfully run in the current workflow.
+#     parameters:
+#       #add parameters here
+#       workflow_id:
+#         type: string
+#         default: "${CIRCLE_WORKFLOW_ID:0:7}"     
+#     steps:
+#       - run:
+#           name: Revert migrations
+#           # Add when this will run
+#           when: on_fail
+#           command: |
+#             # Curl command here to see if there was a successful migration associated with the workflow id, store result in SUCCESS variable
+#             # SUCCESS = 1  # comment this code line.
+#             SUCCESS=$(curl -k "https://kvdb.io/Ddru8uAtzykhKNxseBqGBP/migration_<< parameters.workflow_id >>")
+#             if(( $SUCCESS==1 )); 
+#             then
+#               cd ~/project/backend
+#               npm install
+#               #  Add revert code here. You can find this in the Getting Started section.
+#               npm run migrations:revert
+#             fi
 
          
 jobs:
