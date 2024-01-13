@@ -6,11 +6,12 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 from asgiref.wsgi import WsgiToAsgi
-from flask_socketio import SocketIO, emit, join_room
+# from flask_socketio import SocketIO, emit, join_room
 
 
 from .endpoints.routes import rest_api
 from .models.models import db
+from .endpoints.rtc.routes import socketio
 
 app = Flask(__name__)
 
@@ -19,7 +20,8 @@ app.config.from_object('api.config.BaseConfig')
 db.init_app(app)
 rest_api.init_app(app)
 CORS(app)
-socketio = SocketIO(app, cors_allowed_origins="*")
+# socketio = SocketIO(app, cors_allowed_origins="*")
+socketio.init_app(app)
 JWTManager(app)
 migrate = Migrate(app, db)
 

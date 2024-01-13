@@ -8,7 +8,7 @@ from flask_socketio import SocketIO, emit, send, join_room, leave_room
 
 from ...models.models import ChatConnection, Mentees, Mentors, Community, CommunityMember, Message, User
 from ...config import BaseConfig
-from ... import socketio
+# from ... import socketio
 
 
 webrtc_ns = Namespace('webrtc', description='WebRTC related operations')
@@ -17,6 +17,7 @@ webrtc_ns = Namespace('webrtc', description='WebRTC related operations')
 webrtc_ns.logger.setLevel(logging.INFO)
 fh = logging.FileHandler("v5.log")
 webrtc_ns.logger.addHandler(fh)
+socketio = SocketIO(cors_allowed_origins="*")
 
 
 
