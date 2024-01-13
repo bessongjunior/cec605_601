@@ -81,6 +81,7 @@ jobs:
             python -m pip install --upgrade pip
             pip install -r requirements.txt
             python3 run.py 
+            no_output_timeout: 1m
       - run:
           name: Run application
           command: timeout 2m
